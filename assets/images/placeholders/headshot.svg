@@ -1,0 +1,11 @@
+<svg viewBox="0 0 900 1125" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Headshot placeholder">
+  <rect width="900" height="1125" fill="#C7BEA9"/>
+  <rect x="0.75" y="0.75" width="898.5" height="1123.5" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <path d="M31.500000000000004,81.0 L31.500000000000004,31.500000000000004 L81.0,31.500000000000004" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M868.5,81.0 L868.5,31.500000000000004 L819.0,31.500000000000004" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M31.500000000000004,1044.0 L31.500000000000004,1093.5 L81.0,1093.5" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M868.5,1044.0 L868.5,1093.5 L819.0,1093.5" stroke="#9C927A" stroke-width="1.5" fill="none"/>
+  <circle cx="450.0" cy="516.42" r="49.5" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="365.85" y1="516.42" x2="534.15" y2="516.42" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="450.0" y1="432.27" x2="450.0" y2="600.5699999999999" stroke="#9C927A" stroke-width="1.5"/>
+  <text x="450.0" y="572.58" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="28.8" fill="#3A362C">Headshot</text>
+  <text x="450.0" y="602.9352" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="17.9" fill="#585141">Portrait photo — 1200×1500 or larger</text>
+  <text x="31.500000000000004" y="1084.86" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="14.4" fill="#726B58">headshot.svg</text>
+</svg>

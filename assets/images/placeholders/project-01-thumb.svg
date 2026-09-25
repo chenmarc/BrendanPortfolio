@@ -1,0 +1,11 @@
+<svg viewBox="0 0 900 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Project 1 thumbnail placeholder">
+  <rect width="900" height="675" fill="#C7BEA9"/>
+  <rect x="0.75" y="0.75" width="898.5" height="673.5" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <path d="M23.625000000000004,60.75 L23.625000000000004,23.625000000000004 L60.75,23.625000000000004" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M876.375,60.75 L876.375,23.625000000000004 L839.25,23.625000000000004" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M23.625000000000004,614.25 L23.625000000000004,651.375 L60.75,651.375" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M876.375,614.25 L876.375,651.375 L839.25,651.375" stroke="#9C927A" stroke-width="1.5" fill="none"/>
+  <circle cx="450.0" cy="302.94" r="37.125" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="386.8875" y1="302.94" x2="513.1125" y2="302.94" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="450.0" y1="239.8275" x2="450.0" y2="366.0525" stroke="#9C927A" stroke-width="1.5"/>
+  <text x="450.0" y="345.06" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="21.6" fill="#3A362C">Project 1 thumbnail</text>
+  <text x="450.0" y="367.8264" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="13.4" fill="#585141">4:3 still — 1200×900</text>
+  <text x="23.625000000000004" y="644.895" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="10.8" fill="#726B58">project-01-thumb.svg</text>
+</svg>

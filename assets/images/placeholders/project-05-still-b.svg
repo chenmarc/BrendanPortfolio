@@ -1,0 +1,11 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Project 5 still B placeholder">
+  <rect width="900" height="600" fill="#C7BEA9"/>
+  <rect x="0.75" y="0.75" width="898.5" height="598.5" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <path d="M21.000000000000004,54.0 L21.000000000000004,21.000000000000004 L54.0,21.000000000000004" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M879.0,54.0 L879.0,21.000000000000004 L846.0,21.000000000000004" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M21.000000000000004,546.0 L21.000000000000004,579.0 L54.0,579.0" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M879.0,546.0 L879.0,579.0 L846.0,579.0" stroke="#9C927A" stroke-width="1.5" fill="none"/>
+  <circle cx="450.0" cy="269.28" r="33.0" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="393.9" y1="269.28" x2="506.1" y2="269.28" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="450.0" y1="213.17999999999998" x2="450.0" y2="325.38" stroke="#9C927A" stroke-width="1.5"/>
+  <text x="450.0" y="306.72" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="19.2" fill="#3A362C">Project 5 still B</text>
+  <text x="450.0" y="326.95680000000004" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="11.9" fill="#585141">3:2 frame grab or set photo</text>
+  <text x="21.000000000000004" y="573.24" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="9.6" fill="#726B58">project-05-still-b.svg</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hero image placeholder">
+  <rect width="1600" height="1000" fill="#C7BEA9"/>
+  <rect x="0.75" y="0.75" width="1598.5" height="998.5" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <path d="M35.0,90.0 L35.0,35.0 L90.0,35.0" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M1565.0,90.0 L1565.0,35.0 L1510.0,35.0" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M35.0,910.0 L35.0,965.0 L90.0,965.0" stroke="#9C927A" stroke-width="1.5" fill="none"/><path d="M1565.0,910.0 L1565.0,965.0 L1510.0,965.0" stroke="#9C927A" stroke-width="1.5" fill="none"/>
+  <circle cx="800.0" cy="448.8" r="55.0" fill="none" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="706.5" y1="448.8" x2="893.5" y2="448.8" stroke="#9C927A" stroke-width="1.5"/>
+  <line x1="800.0" y1="355.3" x2="800.0" y2="542.3" stroke="#9C927A" stroke-width="1.5"/>
+  <text x="800.0" y="511.2" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="32.0" fill="#3A362C">Hero image</text>
+  <text x="800.0" y="544.928" text-anchor="middle" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="19.8" fill="#585141">Wide still or BTS photo — 1600×1000 or larger</text>
+  <text x="35.0" y="955.4" font-family="'IBM Plex Mono', 'SFMono-Regular', monospace" font-size="16.0" fill="#726B58">hero-still.svg</text>
+</svg>

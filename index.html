@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brendan Kesterson — Camera Operator</title>
+  <meta name="description" content="Brendan Kesterson is a camera operator working in film, television, and commercial production. Watch the reel, view recent projects, and get in touch.">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER / NAV — identical on every page ============ -->
+  <header class="site-header">
+    <div class="container site-header__bar">
+      <a class="wordmark" href="index.html">Brendan Kesterson</a>
+      <nav class="primary-nav" data-open="false" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-list" aria-label="Toggle menu">
+          <span class="nav-toggle__bar nav-toggle__bar--top"></span>
+          <span class="nav-toggle__bar nav-toggle__bar--mid"></span>
+          <span class="nav-toggle__bar nav-toggle__bar--bottom"></span>
+        </button>
+        <ul class="primary-nav__list" id="primary-nav-list">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============
+         EDIT ME: swap the headline copy, tagline, location, and the
+         hero image below. Keep the name and role clear at a glance. -->
+    <section class="hero">
+      <div class="hero__text">
+        <h1>Brendan Kesterson</h1>
+        <p class="lead">Camera operator working in film, television, and commercial production.</p>
+        <div class="button-row">
+          <a class="btn btn--primary" href="work.html">View work</a>
+          <a class="btn btn--ghost" href="#reel">Watch reel</a>
+        </div>
+        <dl class="spec-list">
+          <div class="spec-list__row">
+            <dt>Based in</dt>
+            <dd>[City, State]</dd>
+          </div>
+          <div class="spec-list__row">
+            <dt>Availability</dt>
+            <dd>[Open for work]</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero__image">
+        <img
+          src="assets/images/placeholders/hero-still.svg"
+          alt="Placeholder: a striking behind-the-scenes or on-set photo of Brendan operating camera">
+      </div>
+    </section>
+
+    <!-- ============ REEL ============
+         EDIT ME: once you have a reel hosted on YouTube or Vimeo, set
+         data-provider and data-embed-id on the button below (see the
+         comment in js/main.js for details). -->
+    <section class="section" id="reel">
+      <div class="container">
+        <div class="section__head">
+          <h2>Reel</h2>
+          <p>A running compilation of recent camera operating and second&nbsp;unit work.</p>
+        </div>
+
+        <button
+          class="video-facade"
+          type="button"
+          data-provider="vimeo"
+          data-embed-id=""
+          data-title="Brendan Kesterson — Camera Operator Reel"
+          aria-label="Play reel">
+          <img
+            src="assets/images/placeholders/reel-cover.svg"
+            alt=""
+            aria-hidden="true">
+          <span class="video-facade__play" aria-hidden="true">
+            <span class="video-facade__play-circle">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"></polygon></svg>
+            </span>
+          </span>
+        </button>
+        <p class="video-facade__caption">
+          <span>Run time: [1:45]</span>
+          <span>Last updated: [Month Year]</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SELECTED WORK ============
+         Pulls three projects from work.html. Update the href, image,
+         title, and role for each card. The href's #project-XX anchor
+         opens that project automatically when the visitor lands on
+         work.html. -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Selected work</h2>
+          <a class="btn btn--ghost" href="work.html">View all work</a>
+        </div>
+
+        <div class="teaser-grid">
+          <a class="teaser-card" href="work.html#project-01">
+            <img
+              src="assets/images/placeholders/project-01-thumb.svg"
+              alt="Placeholder: thumbnail still from Project 1">
+            <span class="teaser-card__title">[Project Title 01]</span>
+            <span class="teaser-card__role">[Short film — Camera Operator]</span>
+          </a>
+          <a class="teaser-card" href="work.html#project-02">
+            <img
+              src="assets/images/placeholders/project-02-thumb.svg"
+              alt="Placeholder: thumbnail still from Project 2">
+            <span class="teaser-card__title">[Project Title 02]</span>
+            <span class="teaser-card__role">[Commercial — 1st AC]</span>
+          </a>
+          <a class="teaser-card" href="work.html#project-03">
+            <img
+              src="assets/images/placeholders/project-03-thumb.svg"
+              alt="Placeholder: thumbnail still from Project 3">
+            <span class="teaser-card__title">[Project Title 03]</span>
+            <span class="teaser-card__role">[Music video — Steadicam Operator]</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT TEASER ============
+         EDIT ME: a short, one-or-two sentence introduction. Save the
+         full biography for about.html. -->
+    <section class="section section--tight">
+      <div class="container narrow">
+        <h2>About</h2>
+        <p>[One or two sentences establishing your background, the kind of sets you work on, and what you bring to a camera department. Keep it brief — the full story lives on the About page.]</p>
+        <p><a class="btn btn--ghost" href="about.html">More about Brendan</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER / CONTACT — identical on every page ============ -->
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__col">
+        <p class="footer-name">Brendan Kesterson</p>
+        <p>Camera operator based in [City, State].</p>
+      </div>
+      <div class="site-footer__col">
+        <p class="footer-heading">Navigate</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="footer-heading">Contact</p>
+        <ul>
+          <li><a href="mailto:hello@brendankesterson.com">hello@brendankesterson.com</a></li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://vimeo.com/" target="_blank" rel="noopener">Vimeo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <p class="site-footer__legal">© 2026 Brendan Kesterson. Built with HTML, CSS, and vanilla JavaScript.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
