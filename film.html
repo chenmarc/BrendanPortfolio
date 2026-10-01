@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact | Brendan Kesterson</title>
-  <meta name="description" content="Contact camera operator Brendan Kesterson.">
+  <title>Film | Brendan Kesterson</title>
+  <meta name="description" content="A film shot by camera operator Brendan Kesterson.">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
   <!-- Typeface: EB Garamond (Google Fonts) -->
@@ -29,9 +29,9 @@
     <a class="site-name" href="index.html">Brendan Kesterson</a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="work.html">Work</a></li>
+        <li><a href="work.html" aria-current="page">Work</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -42,14 +42,9 @@
   </noscript>
 
   <main id="main">
-
-    <section class="container intro">
-      <h1>Contact</h1>
-    </section>
-
-    <!-- Email, phone, location, and links all come from SITE in js/content.js -->
-    <section class="container contact" data-render="contact"></section>
-
+    <!-- One template for every film. The film is chosen by the ?v= video
+         ID in the address, e.g. film.html?v=yTj7HgodvdY -->
+    <div data-render="film-page"></div>
   </main>
 
   <!-- Footer is filled in from SITE in js/content.js -->
