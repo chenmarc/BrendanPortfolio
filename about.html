@@ -4,20 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About | Brendan Kesterson</title>
-  <meta name="description" content="About Brendan Kesterson, camera operator.">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
-  <!-- Typeface: EB Garamond (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap">
 
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
 
-  <!-- Films and site details live in content.js; render.js builds the markup. -->
+  <!-- Videos and contact links live in content.js -->
   <script src="js/content.js" defer></script>
   <script src="js/render.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -29,45 +27,17 @@
     <a class="site-name" href="index.html">Brendan Kesterson</a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="work.html">Work</a></li>
+        <li><a href="index.html">Work</a></li>
         <li><a href="about.html" aria-current="page">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <noscript>
-    <p class="container">This site needs JavaScript to show the films.
-    You can watch them on <a href="https://www.youtube.com/@B_Borderless">YouTube</a>.</p>
-  </noscript>
-
-  <main id="main">
-    <div class="container about">
-
-      <!-- A frame from one of the films (see renderAboutFrame in render.js).
-           To use a portrait instead, replace this element with an <img>. -->
-      <figure class="about__frame" data-render="about-frame"></figure>
-
-      <div class="about__bio">
-        <h1>About</h1>
-
-        <!-- EDIT: biography -->
-        <p class="lead">Brendan Kesterson is a camera operator who makes short, observational films.</p>
-        <p>His work moves between nature, food, and art, following whatever the camera happens to find along the way. He publishes it on his YouTube channel, B_Borderless.</p>
-        <p>He is building toward work on film and television sets as a camera operator, and is available for short films, documentary, commercial, and music video productions.</p>
-        <p><a href="contact.html">Get in touch</a></p>
-
-        <section class="about__films">
-          <h2>Films</h2>
-          <!-- Built automatically from js/content.js -->
-          <div data-render="film-list"></div>
-        </section>
-      </div>
-
-    </div>
+  <main id="main" class="container page">
+    <h1 class="visually-hidden">About</h1>
+    <!-- EDIT: replace with the real biography -->
+    <p class="about-text">Placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder.</p>
   </main>
-
-  <!-- Footer is filled in from SITE in js/content.js -->
-  <footer class="site-footer" data-render="footer"></footer>
 </body>
 </html>

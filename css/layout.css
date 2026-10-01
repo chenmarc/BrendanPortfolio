@@ -1,6 +1,5 @@
 /*
-  LAYOUT — the page frame: header, sections, footer, and the
-  arrangements specific to each page.
+  LAYOUT — page frame: container, header, and page spacing.
 */
 
 .container {
@@ -10,16 +9,13 @@
   padding-inline: var(--gutter);
 }
 
-
-/* ---------- Header ---------- */
-
 .site-header {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--s2) var(--s4);
-  padding-block: var(--s4);
+  padding-block: var(--s4) var(--s5);
 }
 
 .site-name {
@@ -27,10 +23,7 @@
   text-decoration: none;
 }
 
-.site-nav ul {
-  display: flex;
-  gap: var(--s4);
-}
+.site-nav ul { display: flex; gap: var(--s4); }
 
 .site-nav a {
   font-size: var(--text-sm);
@@ -40,115 +33,10 @@
 
 .site-nav a:hover { color: var(--accent); }
 
-/* The current page is set in italic and full ink — no bars or pills. */
-.site-nav a[aria-current="page"] {
-  color: var(--ink);
-  font-style: italic;
-}
+/* Current page: italic, full ink. */
+.site-nav a[aria-current="page"] { color: var(--ink); font-style: italic; }
 
+main { padding-bottom: var(--s7); }
 
-/* ---------- Page intro (the heading block at the top of a page) ---------- */
-
-.intro {
-  padding-block: var(--s5) var(--s6);
-}
-
-.intro h1 { max-width: 16em; }
-
-.intro p {
-  margin-top: var(--s3);
-  font-size: var(--text-lead);
-  line-height: 1.45;
-  color: var(--ink-soft);
-  max-width: 28em;
-}
-
-
-/* ---------- Section rhythm ---------- */
-
-.section {
-  padding-block: var(--s6);
-}
-
-.section-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--s2) var(--s4);
-  padding-top: var(--s3);
-  margin-bottom: var(--s5);
-  border-top: 1px solid var(--line-strong);
-}
-
-.section-head a { font-size: var(--text-sm); }
-
-
-/* ---------- About ---------- */
-
-.about {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
-  gap: var(--s6);
-  align-items: start;
-  padding-bottom: var(--s6);
-}
-
-.about__bio h1 { margin-bottom: var(--s4); }
-
-.about__bio .lead {
-  font-size: var(--text-lead);
-  line-height: 1.45;
-}
-
-.about__films { margin-top: var(--s6); }
-.about__films h2 { margin-bottom: var(--s3); font-size: var(--text-title); }
-
-@media (max-width: 860px) {
-  .about { grid-template-columns: 1fr; gap: var(--s5); }
-}
-
-
-/* ---------- Contact ---------- */
-
-.contact {
-  padding-bottom: var(--s7);
-}
-
-.contact .meta--stacked { max-width: 30rem; }
-
-.contact-subhead {
-  font-size: var(--text-title);
-  margin: var(--s6) 0 var(--s3);
-}
-
-
-/* ---------- Footer ---------- */
-
-.site-footer {
-  margin-top: var(--s6);
-  border-top: 1px solid var(--line);
-  padding-block: var(--s5);
-  font-size: var(--text-sm);
-  color: var(--ink-soft);
-}
-
-.footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s4);
-}
-
-.footer p { margin: 0 0 0.25em; }
-
-.footer__name { color: var(--ink); }
-
-.footer__legal {
-  grid-column: 1 / -1;
-  color: var(--ink-faint);
-  font-size: var(--text-xs);
-}
-
-@media (max-width: 640px) {
-  .footer { grid-template-columns: 1fr; }
-}
+/* About and Contact: text set in a comfortable column. */
+.page { padding-top: var(--s4); }

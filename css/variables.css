@@ -27,7 +27,6 @@
   /* ---- Type ---- */
   --serif: "EB Garamond", Garamond, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
-  --text-xs: 0.9375rem;   /* metadata labels */
   --text-sm: 1.0625rem;   /* captions, metadata values, nav */
   --text-base: 1.1875rem; /* body — Garamond runs small, so body is set a little larger */
   --text-lead: 1.4375rem;

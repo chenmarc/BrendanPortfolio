@@ -1,155 +1,20 @@
 /*
-  COMPONENTS — the reusable pieces. To change how something looks
-  (the index entries, the player, metadata), this is the file.
+  COMPONENTS — the video column, the player, About text, contact list.
 */
 
+/* ---------- Videos: one column, full width, evenly spaced ---------- */
 
-/* ---------- Framed image ----------
-   Images are cropped into a fixed ratio with object-fit, so any source
-   (a YouTube thumbnail, a letterboxed frame, your own grab) sits cleanly.
-   .frame--wide is the 2.39:1 cinema crop; .frame--standard is 16:9. */
-
-.frame {
-  display: block;
-  overflow: hidden;
-  background: var(--frame-bg);
+.videos {
+  display: grid;
+  gap: var(--s6);
 }
-
-.frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.frame--wide { aspect-ratio: 2.39 / 1; }
-.frame--standard { aspect-ratio: 16 / 9; }
 
 @media (max-width: 700px) {
-  /* 2.39:1 gets too thin on a phone; fall back to 16:9 */
-  .frame--wide { aspect-ratio: 16 / 9; }
-}
-
-a .frame img { transition: opacity var(--ease); }
-a:hover .frame img { opacity: 0.88; }
-
-.caption {
-  margin-top: var(--s2);
-  font-size: var(--text-sm);
-  font-style: italic;
-  color: var(--ink-soft);
+  .videos { gap: var(--s4); }
 }
 
 
-/* ---------- Homepage opening frame (full bleed) ---------- */
-
-.hero-frame { display: block; }
-
-.hero-frame .frame--wide { max-height: 78vh; width: 100%; }
-
-
-/* ---------- Metadata ----------
-   A small definition list. Labels in italic, values in roman. Inline by
-   default; .meta--stacked turns it into ruled rows. */
-
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s1) var(--s4);
-  margin: 0;
-  font-size: var(--text-sm);
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-.meta div { display: flex; gap: 0.4em; }
-
-.meta dt { font-style: italic; color: var(--ink-faint); }
-
-.meta dd { margin: 0; color: var(--ink-soft); }
-
-.meta--stacked { display: block; }
-
-.meta--stacked div {
-  justify-content: space-between;
-  gap: var(--s3);
-  padding-block: var(--s2);
-  border-bottom: 1px solid var(--line);
-}
-
-.meta--stacked div:first-child { border-top: 1px solid var(--line); }
-
-.meta--stacked dd { text-align: right; color: var(--ink); }
-
-
-/* ---------- Film index entries ----------
-   Three compositions, assigned in rotation by render.js. */
-
-.film-index {
-  display: grid;
-  gap: var(--s7);
-}
-
-.entry {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--s4);
-  row-gap: var(--s3);
-}
-
-.entry__image { display: block; }
-
-.entry__number {
-  margin-bottom: var(--s1);
-  font-size: var(--text-sm);
-  color: var(--ink-faint);
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-.entry__title a { text-decoration: none; }
-.entry__title a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
-
-.entry__details { display: grid; gap: var(--s2); }
-
-.entry__summary { color: var(--ink-soft); }
-
-.entry__link { font-size: var(--text-sm); font-style: italic; }
-
-/* wide: full-width cinema crop, then title beside details */
-.entry--wide .entry__image { grid-column: 1 / -1; }
-
-.entry--wide .entry__text {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: var(--s4);
-  align-items: start;
-}
-
-/* left: image left, text bottom-right */
-.entry--left .entry__image { grid-column: 1 / 9; }
-.entry--left .entry__text { grid-column: 9 / 13; align-self: end; }
-
-/* right: text bottom-left, image right — slightly narrower for rhythm */
-.entry--right .entry__image { grid-column: 5 / 12; grid-row: 1; }
-.entry--right .entry__text { grid-column: 1 / 5; grid-row: 1; align-self: end; }
-
-@media (max-width: 820px) {
-  .film-index { gap: var(--s6); }
-
-  .entry--wide .entry__image,
-  .entry--left .entry__image,
-  .entry--right .entry__image,
-  .entry--wide .entry__text,
-  .entry--left .entry__text,
-  .entry--right .entry__text {
-    grid-column: 1 / -1;
-    grid-row: auto;
-  }
-
-  .entry--wide .entry__text { grid-template-columns: 1fr; gap: var(--s2); }
-}
-
-
-/* ---------- Video player (click to load) ---------- */
+/* ---------- Player (thumbnail + play button until pressed) ---------- */
 
 .player {
   position: relative;
@@ -157,13 +22,13 @@ a:hover .frame img { opacity: 0.88; }
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--ink);
+  background: var(--frame-bg);
 }
 
 .player img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;   /* also crops the black bars off fallback thumbnails */
 }
 
 .player__button {
@@ -188,6 +53,8 @@ a:hover .frame img { opacity: 0.88; }
   border-color: var(--accent);
 }
 
+.player--playing { background: var(--ink); }
+
 .player--playing iframe {
   position: absolute;
   inset: 0;
@@ -197,117 +64,33 @@ a:hover .frame img { opacity: 0.88; }
 }
 
 
-/* ---------- Film page ---------- */
+/* ---------- About ---------- */
 
-.film-head { padding-block: var(--s4) var(--s5); }
-
-.film-head__back {
-  margin-bottom: var(--s4);
-  font-size: var(--text-sm);
-  font-style: italic;
-}
-
-.film-head h1 { margin-bottom: var(--s3); }
-
-.film-player { margin-bottom: var(--s6); }
-
-.film-notes {
-  display: grid;
-  grid-template-columns: 7fr 4fr;
-  gap: var(--s6);
-  margin-bottom: var(--s6);
-}
-
-.film-notes__text p { font-size: var(--text-lead); line-height: 1.5; }
-
-.film-frames { margin-bottom: var(--s6); }
-
-.frames {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--s3);
-}
-
-.film-nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s4);
-  padding-top: var(--s4);
-  border-top: 1px solid var(--line-strong);
-}
-
-.film-nav div:last-child { text-align: right; }
-
-.film-nav span {
-  display: block;
-  font-size: var(--text-sm);
-  font-style: italic;
-  color: var(--ink-faint);
-}
-
-.film-nav a { font-size: var(--text-title); text-decoration: none; }
-.film-nav a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
-
-.film-missing { padding-block: var(--s6) var(--s7); }
-.film-missing p { margin-top: var(--s3); }
-
-@media (max-width: 820px) {
-  .film-notes { grid-template-columns: 1fr; gap: var(--s4); }
-  .frames { grid-template-columns: 1fr 1fr; }
-  .frames li:last-child { grid-column: 1 / -1; }
-}
-
-
-/* ---------- Film list (About page) ---------- */
-
-.film-list th {
-  text-align: left;
-  font-weight: 400;
-  font-style: italic;
-  font-size: var(--text-sm);
-  color: var(--ink-faint);
-  padding-bottom: var(--s1);
-  border-bottom: 1px solid var(--line-strong);
-}
-
-.film-list td {
-  padding-block: var(--s2);
-  border-bottom: 1px solid var(--line);
-  vertical-align: baseline;
-}
-
-.film-list td:nth-child(2) { color: var(--ink-soft); font-size: var(--text-sm); }
-
-.film-list th:last-child,
-.film-list td:last-child {
-  text-align: right;
-  font-variant-numeric: lining-nums tabular-nums;
-  color: var(--ink-soft);
-}
-
-.film-list a { text-decoration: none; }
-.film-list a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
-
-
-/* ---------- Links and contact ---------- */
-
-.link-list li { margin-bottom: 0.3em; }
-
-.link-list--inline { display: flex; flex-wrap: wrap; gap: 0 var(--s3); }
-
-.contact-lead {
+.about-text {
   font-size: var(--text-lead);
-  line-height: 1.45;
-  color: var(--ink-soft);
-  max-width: 28em;
+  line-height: 1.5;
+  max-width: 30em;
 }
 
-.contact-email {
-  margin: var(--s5) 0;
-  max-width: none;
-  font-size: clamp(1.75rem, 4.2vw, 3rem);
-  line-height: 1.2;
-  overflow-wrap: anywhere;
+
+/* ---------- Contact ---------- */
+
+.contact-list {
+  margin: 0;
+  max-width: 36rem;
 }
 
-.contact-email a { text-decoration-color: var(--line-strong); }
+.contact-list div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s1) var(--s4);
+  padding-block: var(--s3);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-list div:first-child { border-top: 1px solid var(--line); }
+
+.contact-list dt { font-style: italic; color: var(--ink-faint); }
+
+.contact-list dd { margin: 0; overflow-wrap: anywhere; }
