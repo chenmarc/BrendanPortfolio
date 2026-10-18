@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brendan Kesterson</title>
+  <meta name="theme-color" content="#0b0b0b">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +16,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
 
-  <!-- Videos and contact links live in content.js -->
+  <!-- All content lives in js/content.js; render.js builds the markup. -->
   <script src="js/content.js" defer></script>
   <script src="js/render.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -27,17 +28,27 @@
     <a class="site-name" href="index.html">Brendan Kesterson</a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html" aria-current="page">Work</a></li>
+        <li><a href="index.html" aria-current="page">Projects</a></li>
+        <li><a href="stills.html">Stills Archive</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
+    <!-- LinkedIn / YouTube / Instagram icons: links set in js/content.js -->
+    <ul class="social" data-render="social" aria-label="Social links"></ul>
   </header>
 
-  <main id="main" class="container">
-    <h1 class="visually-hidden">Work</h1>
-    <!-- Filled from the VIDEOS list in js/content.js -->
-    <ul class="videos" data-render="videos"></ul>
+  <main id="main">
+
+    <!-- Demo reel: plays muted on loop. Set REEL in js/content.js -->
+    <section class="reel" data-render="reel" aria-label="Demo reel"></section>
+
+    <div class="container">
+      <h1 class="page-title">Projects</h1>
+      <!-- Narrative / Freelance / Documentary sections, from CATEGORIES
+           and PROJECTS in js/content.js -->
+      <div data-render="projects"></div>
+    </div>
+
   </main>
 </body>
 </html>

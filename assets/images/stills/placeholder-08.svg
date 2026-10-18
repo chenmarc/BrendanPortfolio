@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#1d1d1c"/>
+  <rect x="1" y="1" width="1918" height="1078" fill="none" stroke="#3a3936" stroke-width="2"/>
+  <text x="960.0" y="540.0" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, serif" font-style="italic" font-size="59" fill="#8f8b84">Still placeholder</text>
+</svg>

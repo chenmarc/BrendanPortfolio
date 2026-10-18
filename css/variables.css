@@ -1,43 +1,27 @@
 /*
-  DESIGN TOKENS
-  =============
-  Every color, font size, and spacing value is defined once here.
-
-  Type: one family throughout — EB Garamond, a faithful revival of
-  Claude Garamond's 16th-century roman and italic. Hierarchy comes from
-  size, italic, and color rather than from mixing typefaces.
-
-  Color: warm paper and dark ink, quiet enough that the film stills
-  carry all the color on the page. The oxblood accent appears only on
-  hover and in a few small marks.
+  DESIGN TOKENS — every color, size, and spacing value, defined once.
+  Black page, white type, one serif family (EB Garamond).
+  All text colors pass WCAG AA contrast on the background.
 */
 
 :root {
-  /* ---- Color (all text pairs meet WCAG AA 4.5:1) ---- */
-  --paper: #edeae3;
-  --ink: #1b1a17;
-  --ink-soft: #55514a;
-  --ink-faint: #67625a;
-  --accent: #7d2f1f;
-  --line: rgba(27, 26, 23, 0.14);
-  --line-strong: rgba(27, 26, 23, 0.4);
-  --frame-bg: #d9d4c9;          /* shows while an image loads */
-  --focus: #1f5fbf;
+  --bg: #0b0b0b;
+  --bg-raised: #161615;      /* shows behind images while they load */
+  --text: #f2f0ec;
+  --text-soft: #b3afa7;
+  --text-faint: #8f8b84;
+  --line: rgba(242, 240, 236, 0.14);
+  --scrim: rgba(11, 11, 11, 0.62);   /* darkens a thumbnail under its hover title */
+  --focus: #8db8ff;
 
-  /* ---- Type ---- */
   --serif: "EB Garamond", Garamond, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
-  --text-sm: 1.0625rem;   /* captions, metadata values, nav */
-  --text-base: 1.1875rem; /* body — Garamond runs small, so body is set a little larger */
+  --text-sm: 1.0625rem;
+  --text-base: 1.1875rem;
   --text-lead: 1.4375rem;
-  --text-title: 1.625rem; /* film titles in the index */
-  --text-h2: clamp(1.75rem, 2.4vw, 2.125rem);
-  --text-h1: clamp(2.375rem, 4.6vw, 3.5rem);
+  --text-h2: clamp(1.625rem, 2.4vw, 2rem);
+  --text-h1: clamp(2.25rem, 4.2vw, 3.25rem);
 
-  --leading-tight: 1.12;
-  --leading-body: 1.6;
-
-  /* ---- Space ---- */
   --s1: 0.375rem;
   --s2: 0.75rem;
   --s3: 1.125rem;
@@ -46,10 +30,9 @@
   --s6: 4.25rem;
   --s7: 6.5rem;
 
-  /* ---- Layout ---- */
-  --page-max: 1320px;
-  --gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --measure: 34em;        /* comfortable line length for body copy */
+  --page-max: 1440px;
+  --gutter: clamp(1.25rem, 3.5vw, 3rem);
+  --grid-gap: clamp(0.75rem, 1.4vw, 1.25rem);
 
-  --ease: 200ms ease;
+  --ease: 220ms ease;
 }

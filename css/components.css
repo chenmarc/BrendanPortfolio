@@ -1,61 +1,173 @@
 /*
-  COMPONENTS — the video column, the player, About text, contact list.
+  COMPONENTS — the reel, project grid, stills, and the viewer.
 */
 
-/* ---------- Videos: one column, full width, evenly spaced ---------- */
 
-.videos {
+/* ---------- Demo reel ----------
+   Full width, most of the screen tall (but never taller than 16:9 needs
+   on narrow screens). The player is scaled to cover the frame like a
+   background video, cropping its edges if the shapes differ. */
+
+.reel {
+  --reel-h: min(82vh, 56.25vw);
+  position: relative;
+  height: var(--reel-h);
+  background: #000;
+}
+
+.reel__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.reel__frame iframe,
+.reel__frame img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, calc(var(--reel-h) * 16 / 9));
+  height: max(var(--reel-h), 56.25vw);
+  transform: translate(-50%, -50%);
+  border: 0;
+  pointer-events: none;   /* decorative: clicks go to the page, not YouTube */
+}
+
+.reel__frame img { object-fit: cover; }
+
+.reel__sound {
+  position: absolute;
+  left: var(--gutter);
+  bottom: var(--s4);
+  padding: 0.45em 1em;
+  font-size: var(--text-sm);
+  border: 1px solid rgba(242, 240, 236, 0.6);
+  background: var(--scrim);
+  transition: background var(--ease), color var(--ease);
+}
+
+.reel__sound:hover,
+.reel__sound:focus-visible {
+  background: var(--text);
+  color: var(--bg);
+}
+
+
+/* ---------- Project sections ---------- */
+
+.category { margin-top: var(--s6); }
+.category:first-child { margin-top: 0; }
+
+.category h2 {
+  padding-top: var(--s3);
+  margin-bottom: var(--s4);
+  border-top: 1px solid var(--line);
+}
+
+
+/* ---------- Grid ---------- */
+
+.grid {
   display: grid;
-  gap: var(--s6);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
 }
 
-@media (max-width: 700px) {
-  .videos { gap: var(--s4); }
-}
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
 
 
-/* ---------- Player (thumbnail + play button until pressed) ---------- */
+/* ---------- Tiles (projects and stills) ----------
+   The title fades in over a darkened thumbnail on hover or keyboard
+   focus. On touch screens (no hover) it sits beneath the image instead. */
 
-.player {
+.tile {
   position: relative;
   display: block;
   width: 100%;
+  text-align: left;
+}
+
+.tile__frame {
+  display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--frame-bg);
+  background: var(--bg-raised);
 }
 
-.player img {
+.tile__frame img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* also crops the black bars off fallback thumbnails */
+  object-fit: cover;   /* also crops black bars off fallback thumbnails */
 }
 
-.player__button {
+.tile__title {
   position: absolute;
   inset: 0;
-  margin: auto;
-  width: 4.5rem;
-  height: 4.5rem;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  border: 1px solid rgba(237, 234, 227, 0.85);
-  background: rgba(27, 26, 23, 0.32);
-  transition: background var(--ease), border-color var(--ease);
+  padding: var(--s3);
+  text-align: center;
+  font-size: var(--text-lead);
+  line-height: 1.25;
+  background: var(--scrim);
+  opacity: 0;
+  transition: opacity var(--ease);
 }
 
-.player__button svg { width: 1.5rem; height: 1.5rem; fill: var(--paper); margin-left: 3px; }
+.tile:hover .tile__title,
+.tile:focus-visible .tile__title { opacity: 1; }
 
-.player:hover .player__button,
-.player:focus-visible .player__button {
-  background: var(--accent);
-  border-color: var(--accent);
+@media (hover: none) {
+  .tile__title {
+    position: static;
+    display: block;
+    padding: var(--s1) 0 0;
+    text-align: left;
+    font-size: var(--text-sm);
+    color: var(--text-soft);
+    background: none;
+    opacity: 1;
+  }
 }
 
-.player--playing { background: var(--ink); }
+/* Stills keep their own shape: a 2.39:1 frame sits inside the 16:9 cell,
+   and the leftover space matches the page so it simply disappears. */
+.tile--still .tile__frame { background: var(--bg); }
+.tile--still .tile__frame img { object-fit: contain; }
 
-.player--playing iframe {
+
+/* ---------- Viewer (full-screen video / still) ---------- */
+
+.viewer {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: var(--s6) var(--gutter) var(--s5);
+  border: 0;
+  background: rgba(0, 0, 0, 0.95);
+  color: var(--text);
+}
+
+.viewer[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewer::backdrop { background: transparent; }
+
+.viewer__media--video {
+  position: relative;
+  width: min(100%, calc((100dvh - 11rem) * 16 / 9));
+  aspect-ratio: 16 / 9;
+}
+
+.viewer__media--video iframe {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -63,34 +175,38 @@
   border: 0;
 }
 
-
-/* ---------- About ---------- */
-
-.about-text {
-  font-size: var(--text-lead);
-  line-height: 1.5;
-  max-width: 30em;
+.viewer__media--image img {
+  max-width: 100%;
+  max-height: calc(100dvh - 11rem);
+  width: auto;
+  height: auto;
 }
 
-
-/* ---------- Contact ---------- */
-
-.contact-list {
-  margin: 0;
-  max-width: 36rem;
+.viewer__title {
+  margin-top: var(--s3);
+  min-height: 1.6em;
+  font-style: italic;
+  color: var(--text-soft);
 }
 
-.contact-list div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--s1) var(--s4);
-  padding-block: var(--s3);
-  border-bottom: 1px solid var(--line);
+.viewer__close {
+  position: absolute;
+  top: var(--s3);
+  right: var(--gutter);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--text-soft);
 }
 
-.contact-list div:first-child { border-top: 1px solid var(--line); }
+.viewer__close:hover { color: var(--text); }
 
-.contact-list dt { font-style: italic; color: var(--ink-faint); }
-
-.contact-list dd { margin: 0; overflow-wrap: anywhere; }
+.viewer__close svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact | Brendan Kesterson</title>
+  <title>Stills Archive | Brendan Kesterson</title>
+  <meta name="theme-color" content="#0b0b0b">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +16,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
 
-  <!-- Videos and contact links live in content.js -->
+  <!-- All content lives in js/content.js; render.js builds the markup. -->
   <script src="js/content.js" defer></script>
   <script src="js/render.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -27,17 +28,19 @@
     <a class="site-name" href="index.html">Brendan Kesterson</a>
     <nav class="site-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Work</a></li>
+        <li><a href="index.html">Projects</a></li>
+        <li><a href="stills.html" aria-current="page">Stills Archive</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
+    <!-- LinkedIn / YouTube / Instagram icons: links set in js/content.js -->
+    <ul class="social" data-render="social" aria-label="Social links"></ul>
   </header>
 
-  <main id="main" class="container page">
-    <h1 class="visually-hidden">Contact</h1>
-    <!-- Filled from the CONTACT list in js/content.js -->
-    <dl class="contact-list" data-render="contact"></dl>
+  <main id="main" class="container">
+    <h1 class="page-title">Stills Archive</h1>
+    <!-- From the STILLS list in js/content.js -->
+    <ul class="grid" data-render="stills"></ul>
   </main>
 </body>
 </html>
