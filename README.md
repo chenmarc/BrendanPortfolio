@@ -9,8 +9,7 @@ build step. It runs on GitHub Pages as-is.
   loop at the top; below it, projects in a grid by section (Narrative
   Film, Freelance Work, Documentary Film). Hover a thumbnail for its
   title; click to watch with sound in a full-screen viewer.
-- **Stills Archive** (`stills.html`): every still, uncropped; click to
-  enlarge.
+- **Stills** (`stills.html`): every still, uncropped; click to enlarge.
 - **About** (`about.html`): description, email, and social links.
 
 The header on every page links to LinkedIn, YouTube, and Instagram.
@@ -24,7 +23,7 @@ Everything lives in **`js/content.js`**:
 | Demo reel | `REEL` |
 | Projects | `PROJECTS`: one line each, with `title`, `category`, `youtube` |
 | Section names or order | `CATEGORIES` (empty sections are hidden) |
-| Stills | `STILLS`: one line each, in display order |
+| Stills | `STILLS`: one file name per line, in display order |
 | About text, photo, email | `ABOUT` |
 | Social links | `SOCIAL` |
 
@@ -38,15 +37,20 @@ Everything lives in **`js/content.js`**:
 
 ### Adding a still
 
-Put the image in `assets/images/`, then add a line to `STILLS`:
+Put the image in `assets/images/`, then add its file name to `STILLS`:
 
 ```js
-{ src: "assets/images/yes_19.jpg", alt: "Short description of the image" },
+const STILLS = [
+  "Yes_1.jpg",
+  ...
+  "yes_19.jpg"
+];
 ```
 
 File names are case-sensitive on GitHub Pages: `Yes_1.jpg` and
 `yes_1.jpg` are different files, so the name in `content.js` must match
-exactly. Add `title: "Project name"` to show a title on hover.
+the file exactly. If an image doesn't appear on the live site, a
+mismatched name is almost always the cause.
 
 ### About photo and email
 
@@ -75,5 +79,7 @@ http://localhost:8000.
    `index.html` at the top level.
 2. On GitHub: **Settings → Pages**, set Source to "Deploy from a branch",
    choose `main` and `/ (root)`, and save.
-3. The site appears at `https://USERNAME.github.io/REPO/` within a minute
+3. Keep the `.nojekyll` file in the repo; it tells GitHub Pages to
+   serve the files exactly as they are.
+4. The site appears at `https://USERNAME.github.io/REPO/` within a minute
    or two. Later pushes update it automatically.

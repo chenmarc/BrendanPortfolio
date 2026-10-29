@@ -97,20 +97,20 @@ function renderProjects(el) {
 }
 
 
-/* ---------- Stills Archive ---------- */
+/* ---------- Stills ---------- */
 
 function renderStills(el) {
-  el.innerHTML = STILLS.map((still) => `
+  el.innerHTML = STILLS.map((name) => {
+    const src = STILLS_FOLDER + name;
+    return `
     <li>
-      <button class="tile tile--still" type="button"
-              data-image="${esc(still.src)}" data-title="${esc(still.title || "")}" data-alt="${esc(still.alt)}"
-              aria-label="Enlarge: ${esc(still.alt)}">
+      <button class="tile tile--still" type="button" data-image="${esc(src)}" aria-label="Enlarge still">
         <span class="tile__frame">
-          <img src="${esc(still.src)}" alt="${esc(still.alt)}" loading="lazy" decoding="async">
+          <img src="${esc(src)}" alt="" loading="lazy" decoding="async">
         </span>
-        ${still.title ? `<span class="tile__title">${esc(still.title)}</span>` : ""}
       </button>
-    </li>`).join("");
+    </li>`;
+  }).join("");
 }
 
 
