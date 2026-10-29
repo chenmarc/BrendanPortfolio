@@ -103,18 +103,40 @@ function renderStills(el) {
   el.innerHTML = STILLS.map((still) => `
     <li>
       <button class="tile tile--still" type="button"
-              data-image="${esc(still.src)}" data-title="${esc(still.project)}" data-alt="${esc(still.alt)}">
+              data-image="${esc(still.src)}" data-title="${esc(still.title || "")}" data-alt="${esc(still.alt)}"
+              aria-label="Enlarge: ${esc(still.alt)}">
         <span class="tile__frame">
           <img src="${esc(still.src)}" alt="${esc(still.alt)}" loading="lazy" decoding="async">
         </span>
-        <span class="tile__title">${esc(still.project)}</span>
+        ${still.title ? `<span class="tile__title">${esc(still.title)}</span>` : ""}
       </button>
     </li>`).join("");
 }
 
 
-/* ---------- About: email ---------- */
+/* ---------- About ----------
+   Photo and email appear only once they're filled in. The social links
+   double as contact options. */
 
-function renderEmail(el) {
-  el.innerHTML = `<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`;
+function renderAbout(el) {
+  const photo = ABOUT.photo
+    ? `<figure class="about__photo"><img src="${esc(ABOUT.photo)}" alt="${esc(ABOUT.photoAlt)}"></figure>`
+    : "";
+
+  const email = ABOUT.email
+    ? `<div><dt>Email</dt><dd><a href="mailto:${esc(ABOUT.email)}">${esc(ABOUT.email)}</a></dd></div>`
+    : "";
+
+  const links = SOCIAL.filter((s) => s.url).map((s) => `
+    <div><dt>${esc(s.label)}</dt><dd><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.handle || s.label)}</a></dd></div>`
+  ).join("");
+
+  el.className = `about${photo ? " about--with-photo" : ""}`;
+  el.innerHTML = `
+    ${photo}
+    <div class="about__text">
+      <h1>About</h1>
+      ${ABOUT.bio.map((p) => `<p>${esc(p)}</p>`).join("")}
+      <dl class="about__contact">${email}${links}</dl>
+    </div>`;
 }

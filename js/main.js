@@ -10,7 +10,7 @@ const RENDERERS = {
   "reel": renderReel,
   "projects": renderProjects,
   "stills": renderStills,
-  "email": renderEmail
+  "about": renderAbout
 };
 
 document.addEventListener("DOMContentLoaded", () => {

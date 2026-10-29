@@ -2,48 +2,36 @@
   CONTENT.JS — the only file you need to edit for the site's content.
   ===================================================================
 
-  Everything that appears on the site comes from the lists below:
-    SITE        name and email
     SOCIAL      the LinkedIn / YouTube / Instagram icons in the header
     REEL        the demo reel that auto-plays at the top of Projects
     CATEGORIES  the sections on the Projects page, in order
     PROJECTS    every video in the Projects grid
-    STILLS      every image in the Stills Archive
+    STILLS      every image in the Stills Archive, in order
+    ABOUT       the About page: photo, description, email
 
   Any YouTube link format works (watch?v=, youtu.be/, shorts/, embed/).
 */
 
 
-/* ---------- Site details ---------- */
-
-const SITE = {
-  name: "Brendan Kesterson",
-  email: "placeholder@placeholder.com"   // TODO: real email (shown on About)
-};
-
-
 /* ---------- Header icons ----------
-   TODO: replace the placeholder links. `icon` must be one of:
-   "linkedin", "youtube", "instagram". */
+   `icon` must be "linkedin", "youtube", or "instagram".
+   `handle` is the link text shown on the About page. */
 
 const SOCIAL = [
-  { label: "LinkedIn",  icon: "linkedin",  url: "https://www.linkedin.com/in/placeholder" },
-  { label: "YouTube",   icon: "youtube",   url: "https://www.youtube.com/@placeholder" },
-  { label: "Instagram", icon: "instagram", url: "https://www.instagram.com/placeholder" }
+  { label: "LinkedIn",  icon: "linkedin",  handle: "Brendan Kesterson", url: "https://www.linkedin.com/in/brendan-kesterson-22063a24b/" },
+  { label: "YouTube",   icon: "youtube",   handle: "@B_Borderless",     url: "https://www.youtube.com/@B_Borderless" },
+  { label: "Instagram", icon: "instagram", handle: "@b_borderless_",    url: "https://www.instagram.com/b_borderless_/" }
 ];
 
 
 /* ---------- Demo reel ----------
-   Plays automatically, muted and looping, at the top of the Projects page.
-   TODO: replace with the real reel. This is one of the project videos,
-   used as a stand-in until the reel's link is ready. */
+   Plays automatically, muted and looping, at the top of Projects. */
 
-const REEL = "https://www.youtube.com/watch?v=yTj7HgodvdY";
+const REEL = "https://youtu.be/eAFqgfoAOGs";
 
 
 /* ---------- Project sections ----------
-   Sections appear on the Projects page in this order. A section with no
-   projects in it is hidden automatically. */
+   Shown in this order. A section with no projects is hidden. */
 
 const CATEGORIES = [
   { id: "narrative",   title: "Narrative Film" },
@@ -53,38 +41,57 @@ const CATEGORIES = [
 
 
 /* ---------- Projects ----------
-   Add a project by copying one line. `category` must match an id above.
-   The title appears when someone hovers over the thumbnail.
-
-   TODO: real titles, and check each category. These were assigned
-   without knowing which video belongs where. */
+   One line per video. `category` must match an id above.
+   The title appears when someone hovers over the thumbnail. */
 
 const PROJECTS = [
-  { title: "Project title", category: "narrative",   youtube: "https://www.youtube.com/watch?v=yTj7HgodvdY" },
-  { title: "Project title", category: "narrative",   youtube: "https://www.youtube.com/watch?v=0YlwgpSw4c0" },
-  { title: "Project title", category: "freelance",   youtube: "https://www.youtube.com/watch?v=LC2PFbM26wg" },
-  { title: "Project title", category: "freelance",   youtube: "https://www.youtube.com/watch?v=t2gv7S7A6as" },
-  { title: "Project title", category: "documentary", youtube: "https://www.youtube.com/watch?v=FNajKWpBdNY" }
+  { title: "Blood and Ash Trailer", category: "narrative", youtube: "https://youtu.be/bQ8Ka11HBqk" },
+  { title: "Bodacious",             category: "narrative", youtube: "https://youtu.be/ARXyO38aNAg" },
+  { title: "Whiskey Priest",        category: "narrative", youtube: "https://youtu.be/TDgXP2ldb_E" }
 ];
 
 
 /* ---------- Stills Archive ----------
-   Put image files in assets/images/stills/ and add one line each.
-   `project` appears on hover; `alt` describes the image for screen readers.
-   Stills keep their own shape (16:9, 2.39:1, etc.) inside each frame.
-
-   Export as JPG, about 2400 px wide, around 80% quality.
-
-   TODO: replace these placeholders with real stills. */
+   Images live in assets/images/. File names are case-sensitive on
+   GitHub Pages ("Yes_1.jpg" and "yes_1.jpg" are different files).
+   `alt` describes the image for screen readers.
+   Optional: add `title: "Project name"` to show a title on hover. */
 
 const STILLS = [
-  { src: "assets/images/stills/placeholder-01.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-02.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-03.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-04.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-05.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-06.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-07.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-08.svg", project: "Project title", alt: "Placeholder still" },
-  { src: "assets/images/stills/placeholder-09.svg", project: "Project title", alt: "Placeholder still" }
+  { src: "assets/images/Yes_1.jpg",  alt: "Aerial view of a river rushing through a rocky gorge past burned forest" },
+  { src: "assets/images/Yes_2.jpg",  alt: "A red classic Mustang parked in an open garage hung with American flags" },
+  { src: "assets/images/Yes_3.jpg",  alt: "A man seated on a stone wall, silhouetted against a mountain sunset" },
+  { src: "assets/images/yes_4.jpg",  alt: "An artist working at a studio bench surrounded by small landscape paintings" },
+  { src: "assets/images/yes_5.jpg",  alt: "A man in a cap and glasses seated for an interview in a video store" },
+  { src: "assets/images/yes_6.jpg",  alt: "Rugby players chasing the ball carrier across a field at night" },
+  { src: "assets/images/yes_7.jpg",  alt: "Gloved hands turning skewers of meat on a smoking grill" },
+  { src: "assets/images/yes_8.jpg",  alt: "A green mountain bike leaning against a tree beside a meadow" },
+  { src: "assets/images/yes_9.jpg",  alt: "A man in an olive jacket smiling during an outdoor interview" },
+  { src: "assets/images/Yes_10.jpg", alt: "Clouds pouring over steep, forested mountainsides" },
+  { src: "assets/images/yes_11.jpg", alt: "Pink rhododendron blossoms with a bumblebee" },
+  { src: "assets/images/yes_12.jpg", alt: "A gray jay perched on a post at golden hour" },
+  { src: "assets/images/yes_13.jpg", alt: "Two rugby players in a team huddle under floodlights" },
+  { src: "assets/images/yes_14.jpg", alt: "A weightlifter holding a barbell overhead before a cheering crowd" },
+  { src: "assets/images/yes_15.jpg", alt: "A glaciated volcano rising above forested valleys" },
+  { src: "assets/images/yes_16.jpg", alt: "Colored bumper plates on a weightlifting gym floor" },
+  { src: "assets/images/yes_17.jpg", alt: "Students in school uniforms gathered around an SUV in a gravel lot" },
+  { src: "assets/images/yes_18.jpg", alt: "Low cloud over a forested mountain above a lakeside waterfront" },
+  { src: "assets/images/maybe_6.jpg", alt: "Two men in conversation on stage during a Q&A in a cinema" },
+  { src: "assets/images/maybe_7.jpg", alt: "A mule looking into the camera in a sunny paddock" }
 ];
+
+
+/* ---------- About ----------
+   photo:  e.g. "assets/images/brendan.jpg" (portrait, 4:5, ~1200 x 1500 px).
+           While empty, the page shows text only.
+   email:  shown above the social links. While empty, it's hidden.
+   bio:    one string per paragraph. */
+
+const ABOUT = {
+  photo: "",
+  photoAlt: "Brendan Kesterson",
+  email: "",
+  bio: [
+    "Brendan Kesterson is a camera operator working across narrative film, freelance work, and documentary."
+  ]
+};

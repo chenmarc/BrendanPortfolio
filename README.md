@@ -5,79 +5,69 @@ build step. It runs on GitHub Pages as-is.
 
 ## Pages
 
-- **Projects** (`index.html`, the homepage): demo reel playing muted at
-  the top, then Narrative Film, Freelance Work, and Documentary Film
-  grids. Hovering a thumbnail shows its title; clicking plays it with
-  sound in a full-screen viewer.
-- **Stills Archive** (`stills.html`): a grid of stills; click to enlarge.
-- **About** (`about.html`): portrait, description, and email.
+- **Projects** (`index.html`, the homepage): the demo reel plays muted on
+  loop at the top; below it, projects in a grid by section (Narrative
+  Film, Freelance Work, Documentary Film). Hover a thumbnail for its
+  title; click to watch with sound in a full-screen viewer.
+- **Stills Archive** (`stills.html`): every still, uncropped; click to
+  enlarge.
+- **About** (`about.html`): description, email, and social links.
 
-The header on every page has LinkedIn, YouTube, and Instagram icons.
+The header on every page links to LinkedIn, YouTube, and Instagram.
 
-## Editing content
+## Editing
 
-Almost everything lives in **`js/content.js`**:
+Everything lives in **`js/content.js`**:
 
-| To change | Edit in `js/content.js` |
+| To change | Edit |
 |---|---|
-| Demo reel | `REEL` (a YouTube link) |
-| Add a project | `PROJECTS`: copy a line, set `title`, `category`, `youtube` |
-| Section names or order | `CATEGORIES` |
-| Add a still | `STILLS`: add the image to `assets/images/stills/`, then a line |
-| Email | `SITE.email` |
-| LinkedIn / YouTube / Instagram | `SOCIAL` |
-
-Two things are edited in the HTML instead:
-
-- About text and portrait: `about.html` (portrait file goes in
-  `assets/images/about/`)
-- Page names in the header: the `<nav>` in each `.html` file
+| Demo reel | `REEL` |
+| Projects | `PROJECTS`: one line each, with `title`, `category`, `youtube` |
+| Section names or order | `CATEGORIES` (empty sections are hidden) |
+| Stills | `STILLS`: one line each, in display order |
+| About text, photo, email | `ABOUT` |
+| Social links | `SOCIAL` |
 
 ### Adding a project
 
 ```js
-{ title: "Title shown on hover", category: "narrative", youtube: "https://www.youtube.com/watch?v=..." },
+{ title: "Shown on hover", category: "documentary", youtube: "https://youtu.be/VIDEO_ID" },
 ```
 
-`category` is `narrative`, `freelance`, or `documentary`. List order is
-grid order. A section with no projects is hidden.
+`category` is `narrative`, `freelance`, or `documentary`.
 
-## Image sizes
+### Adding a still
 
-| Image | Shape | Size |
-|---|---|---|
-| Stills | any (16:9, 2.39:1, …), shown uncropped | about 2400 px wide |
-| Portrait | 4:5 | 1200 × 1500 px or larger |
+Put the image in `assets/images/`, then add a line to `STILLS`:
 
-Export JPGs at around 80% quality. Project thumbnails come from YouTube
-automatically; set a custom thumbnail on YouTube to change one.
+```js
+{ src: "assets/images/yes_19.jpg", alt: "Short description of the image" },
+```
+
+File names are case-sensitive on GitHub Pages: `Yes_1.jpg` and
+`yes_1.jpg` are different files, so the name in `content.js` must match
+exactly. Add `title: "Project name"` to show a title on hover.
+
+### About photo and email
+
+In `ABOUT`, set `photo` (e.g. `"assets/images/brendan.jpg"`, portrait,
+4:5, about 1200 × 1500 px) and `email`. Until they're set, the page shows
+text and social links only.
 
 ## Notes on video
 
-- The reel auto-plays muted on loop, as browsers only allow silent
-  autoplay. "Watch with sound" opens it in the viewer with audio.
-  YouTube briefly shows its own title overlay when the reel starts;
-  YouTube doesn't allow fully removing it.
+- The reel auto-plays muted (browsers only allow silent autoplay).
+  "Watch with sound" opens it in the viewer with audio. YouTube briefly
+  shows its own title overlay as the reel starts, which can't be fully
+  removed.
 - Visitors whose device is set to reduce motion see a still frame
   instead of the auto-playing reel.
-- Project videos load only when clicked, so the grid stays fast.
-
-## Files
-
-```
-index.html  stills.html  about.html
-js/content.js     ← all content
-js/render.js      builds the markup from content.js
-js/main.js        starts rendering; the full-screen viewer
-css/              variables (colors, type, spacing), base, layout, components
-assets/images/    favicon, stills/, about/
-```
+- Project videos load only when clicked.
 
 ## Running locally
 
 Run `python3 -m http.server 8000` in this folder and visit
-http://localhost:8000. (Opening `index.html` directly also works, but
-some browsers block YouTube embeds on `file://` pages.)
+http://localhost:8000.
 
 ## Deploying to GitHub Pages
 
