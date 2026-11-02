@@ -7,7 +7,7 @@
     CATEGORIES  the sections on the Projects page, in order
     PROJECTS    every video in the Projects grid
     STILLS      every image on the Stills page, in order
-    ABOUT       the About page: photo, description, email
+    ABOUT       the About Me page: photo, description, email
 
   Any YouTube link format works (watch?v=, youtu.be/, shorts/, embed/).
 */
@@ -27,7 +27,7 @@ const SOCIAL = [
 /* ---------- Demo reel ----------
    Plays automatically, muted and looping, at the top of Projects. */
 
-const REEL = "https://youtu.be/eAFqgfoAOGs";
+const REEL = "https://www.youtube.com/watch?v=E7TyR8BJIfg";
 
 
 /* ---------- Project sections ----------
@@ -83,17 +83,16 @@ const STILLS = [
 ];
 
 
-/* ---------- About ----------
-   photo:  e.g. "assets/images/brendan.jpg" (portrait, 4:5, ~1200 x 1500 px).
-           While empty, the page shows text only.
-   email:  shown above the social links. While empty, it's hidden.
+/* ---------- About Me ----------
+   photo:  the portrait shown beside the text (in assets/images/).
+   email:  shown above the social links.
    bio:    one string per paragraph. */
 
 const ABOUT = {
-  photo: "",
+  photo: "assets/images/profilephoto.jpg",
   photoAlt: "Brendan Kesterson",
-  email: "",
+  email: "Brendankesterson1@gmail.com",
   bio: [
-    "Brendan Kesterson is a camera operator working across narrative film, freelance work, and documentary."
+    "I’m someone who took the saying, “Take only pictures and leave only footprints.” to heart. My passion for filmmaking stems from the joy of capturing the scenes and people around me in order to share the stories they hold. I find deep importance in natural elements of our world, and the best way I’ve found to embrace that appreciation is through watching from a respectful distance, ideally through a camera lens. My experience in video is diverse, ranging from a study of narrative film in college, filming outdoor recreation, and documentary work. If you have stories to share, exciting moments you want captured, or just a friendly face to collaborate with, consider me the ideal applicant for the job."
   ]
 };

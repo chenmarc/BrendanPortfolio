@@ -135,7 +135,7 @@ function renderAbout(el) {
   el.innerHTML = `
     ${photo}
     <div class="about__text">
-      <h1>About</h1>
+      <h1>About Me</h1>
       ${ABOUT.bio.map((p) => `<p>${esc(p)}</p>`).join("")}
       <dl class="about__contact">${email}${links}</dl>
     </div>`;

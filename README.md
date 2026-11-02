@@ -10,7 +10,7 @@ build step. It runs on GitHub Pages as-is.
   Film, Freelance Work, Documentary Film). Hover a thumbnail for its
   title; click to watch with sound in a full-screen viewer.
 - **Stills** (`stills.html`): every still, uncropped; click to enlarge.
-- **About** (`about.html`): description, email, and social links.
+- **About Me** (`about.html`): photo, description, email, and social links.
 
 The header on every page links to LinkedIn, YouTube, and Instagram.
 
@@ -24,7 +24,7 @@ Everything lives in **`js/content.js`**:
 | Projects | `PROJECTS`: one line each, with `title`, `category`, `youtube` |
 | Section names or order | `CATEGORIES` (empty sections are hidden) |
 | Stills | `STILLS`: one file name per line, in display order |
-| About text, photo, email | `ABOUT` |
+| About Me text, photo, email | `ABOUT` |
 | Social links | `SOCIAL` |
 
 ### Adding a project
@@ -52,11 +52,11 @@ File names are case-sensitive on GitHub Pages: `Yes_1.jpg` and
 the file exactly. If an image doesn't appear on the live site, a
 mismatched name is almost always the cause.
 
-### About photo and email
+### About Me photo
 
-In `ABOUT`, set `photo` (e.g. `"assets/images/brendan.jpg"`, portrait,
-4:5, about 1200 × 1500 px) and `email`. Until they're set, the page shows
-text and social links only.
+The photo is `assets/images/profilephoto.jpg` and is shown at its own
+shape. To swap it, replace that file and keep the name. A version at
+least 1200 px wide will look sharper on high-resolution screens.
 
 ## Notes on video
 
@@ -83,3 +83,28 @@ http://localhost:8000.
    serve the files exactly as they are.
 4. The site appears at `https://USERNAME.github.io/REPO/` within a minute
    or two. Later pushes update it automatically.
+
+## Custom domain (brendankesterson.com)
+
+The `CNAME` file in the repo root tells GitHub Pages to serve the site
+at brendankesterson.com. Keep it in the repo.
+
+DNS records (Namecheap → Domain List → Manage → Advanced DNS):
+
+| Type | Host | Value |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | USERNAME.github.io. |
+
+Optional AAAA records (IPv6), Host `@`: 2606:50c0:8000::153,
+2606:50c0:8001::153, 2606:50c0:8002::153, 2606:50c0:8003::153.
+
+Delete Namecheap's default parking records first (the URL Redirect
+record on `@` and the CNAME `www` → parkingpage.namecheap.com).
+
+Then on GitHub: **Settings → Pages → Custom domain**, enter
+`brendankesterson.com`, save, wait for the DNS check to pass, and tick
+**Enforce HTTPS**.
