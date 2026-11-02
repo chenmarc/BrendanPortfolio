@@ -6,7 +6,6 @@
 */
 
 const RENDERERS = {
-  "social": renderSocial,
   "reel": renderReel,
   "projects": renderProjects,
   "stills": renderStills,

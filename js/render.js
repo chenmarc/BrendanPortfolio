@@ -25,42 +25,38 @@ function esc(value) {
     .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-const ICONS = {
-  linkedin: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.25v.01M12 17v-6.5M12 13.5c0-1.8 1.1-3 2.5-3s2.5 1 2.5 3V17"/></svg>`,
-  youtube:  `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.25 9.25v5.5L15 12z" class="fill"/></svg>`,
-  instagram:`<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.25" cy="6.75" r="0.6" class="fill"/></svg>`
-};
-
-
-/* ---------- Header icons ---------- */
-
-function renderSocial(el) {
-  el.innerHTML = SOCIAL.filter((s) => s.url && ICONS[s.icon]).map((s) => `
-    <li><a href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}" title="${esc(s.label)}">${ICONS[s.icon]}</a></li>`
-  ).join("");
-}
-
 
 /* ---------- Demo reel ----------
-   A muted, looping YouTube player sized to fill the frame like a
-   background video. "Watch with sound" opens it in the full viewer.
+   Desktop: a muted, looping player sized to fill the frame like a
+   background video, with "Watch with sound" to open it with audio.
+   Phones and tablets: a normal embedded player that still tries to
+   autoplay muted, but has YouTube's controls so it can be tapped to play
+   when the device blocks autoplay (e.g. Low Power Mode).
    Visitors who've asked their device to reduce motion get a still frame
-   and a play button instead of autoplay. */
+   and the "Watch with sound" button instead of autoplay. */
 
 function renderReel(el) {
   const id = getVideoId(REEL);
   if (!id) { el.hidden = true; return; }
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const params = `autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&rel=0&playsinline=1&modestbranding=1&disablekb=1`;
+  const touch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const base = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&rel=0&playsinline=1&modestbranding=1`;
+  const allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+
+  if (touch && !reduceMotion) {
+    el.classList.add("reel--touch");
+    el.innerHTML = `
+      <iframe src="${base}&controls=1" title="Demo reel" allow="${allow}" allowfullscreen></iframe>`;
+    return;
+  }
 
   el.innerHTML = `
     <div class="reel__frame">
       ${reduceMotion
         ? `<img src="${thumbnail(id)}" alt="" data-fallback>`
-        : `<iframe src="https://www.youtube-nocookie.com/embed/${id}?${params}"
-                   title="Demo reel" tabindex="-1" aria-hidden="true"
-                   allow="autoplay; encrypted-media; picture-in-picture"></iframe>`}
+        : `<iframe src="${base}&controls=0&disablekb=1"
+                   title="Demo reel" tabindex="-1" aria-hidden="true" allow="${allow}"></iframe>`}
     </div>
     <button class="reel__sound" type="button" data-video-id="${id}" data-title="Demo reel">
       Watch with sound
@@ -114,9 +110,8 @@ function renderStills(el) {
 }
 
 
-/* ---------- About ----------
-   Photo and email appear only once they're filled in. The social links
-   double as contact options. */
+/* ---------- About Me ----------
+   One centered column: photo, then the description, then contact links. */
 
 function renderAbout(el) {
   const photo = ABOUT.photo
@@ -131,12 +126,9 @@ function renderAbout(el) {
     <div><dt>${esc(s.label)}</dt><dd><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.handle || s.label)}</a></dd></div>`
   ).join("");
 
-  el.className = `about${photo ? " about--with-photo" : ""}`;
   el.innerHTML = `
+    <h1>About Me</h1>
     ${photo}
-    <div class="about__text">
-      <h1>About Me</h1>
-      ${ABOUT.bio.map((p) => `<p>${esc(p)}</p>`).join("")}
-      <dl class="about__contact">${email}${links}</dl>
-    </div>`;
+    ${ABOUT.bio.map((p) => `<p class="about__bio">${esc(p)}</p>`).join("")}
+    <dl class="about__contact">${email}${links}</dl>`;
 }

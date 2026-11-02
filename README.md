@@ -10,9 +10,9 @@ build step. It runs on GitHub Pages as-is.
   Film, Freelance Work, Documentary Film). Hover a thumbnail for its
   title; click to watch with sound in a full-screen viewer.
 - **Stills** (`stills.html`): every still, uncropped; click to enlarge.
-- **About Me** (`about.html`): photo, description, email, and social links.
+- **About Me** (`about.html`): photo, then description, then email and
+  social links, in one centered column.
 
-The header on every page links to LinkedIn, YouTube, and Instagram.
 
 ## Editing
 
@@ -25,7 +25,7 @@ Everything lives in **`js/content.js`**:
 | Section names or order | `CATEGORIES` (empty sections are hidden) |
 | Stills | `STILLS`: one file name per line, in display order |
 | About Me text, photo, email | `ABOUT` |
-| Social links | `SOCIAL` |
+| Social links (on About Me) | `SOCIAL` |
 
 ### Adding a project
 
@@ -60,8 +60,11 @@ least 1200 px wide will look sharper on high-resolution screens.
 
 ## Notes on video
 
-- The reel auto-plays muted (browsers only allow silent autoplay).
-  "Watch with sound" opens it in the viewer with audio. YouTube briefly
+- On desktop the reel auto-plays muted as a background video (browsers
+  only allow silent autoplay); "Watch with sound" opens it with audio.
+- On phones and tablets the reel is a normal player: it still tries to
+  autoplay muted, and has YouTube's controls so it can be tapped to play
+  when the phone blocks autoplay (e.g. Low Power Mode). YouTube briefly
   shows its own title overlay as the reel starts, which can't be fully
   removed.
 - Visitors whose device is set to reduce motion see a still frame
@@ -86,10 +89,16 @@ http://localhost:8000.
 
 ## Custom domain (brendankesterson.com)
 
-The `CNAME` file in the repo root tells GitHub Pages to serve the site
-at brendankesterson.com. Keep it in the repo.
+This site is a project repo on the chenmarc account, which also serves
+marcchen.net from chenmarc.github.io. Each repo's custom domain is set
+in that repo, so this setup doesn't affect marcchen.net.
 
-DNS records (Namecheap → Domain List → Manage → Advanced DNS):
+The `CNAME` file in the repo root (containing `brendankesterson.com`)
+tells GitHub Pages to serve this repo at that domain. Keep it.
+
+DNS records (Namecheap → Domain List → Manage → Advanced DNS for
+brendankesterson.com). Delete the default parking records first (the
+URL Redirect record on `@` and CNAME `www` → parkingpage.namecheap.com):
 
 | Type | Host | Value |
 |---|---|---|
@@ -97,14 +106,12 @@ DNS records (Namecheap → Domain List → Manage → Advanced DNS):
 | A | @ | 185.199.109.153 |
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
-| CNAME | www | USERNAME.github.io. |
+| CNAME | www | chenmarc.github.io. |
 
-Optional AAAA records (IPv6), Host `@`: 2606:50c0:8000::153,
-2606:50c0:8001::153, 2606:50c0:8002::153, 2606:50c0:8003::153.
+The CNAME value is the account's github.io host only, never a repo path;
+DNS can't point at paths. GitHub picks the repo from the custom domain
+set in that repo's Pages settings.
 
-Delete Namecheap's default parking records first (the URL Redirect
-record on `@` and the CNAME `www` → parkingpage.namecheap.com).
-
-Then on GitHub: **Settings → Pages → Custom domain**, enter
-`brendankesterson.com`, save, wait for the DNS check to pass, and tick
+Then in this repo: **Settings → Pages → Custom domain**, enter
+`brendankesterson.com`, save, wait for the DNS check, and tick
 **Enforce HTTPS**.

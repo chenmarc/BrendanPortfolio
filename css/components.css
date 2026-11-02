@@ -35,6 +35,21 @@
 
 .reel__frame img { object-fit: cover; }
 
+/* Touch screens: a normal 16:9 player with YouTube's controls, so it
+   can be tapped to play if the device blocks autoplay. */
+.reel--touch {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.reel--touch iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .reel__sound {
   position: absolute;
   left: var(--gutter);

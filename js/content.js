@@ -2,7 +2,7 @@
   CONTENT.JS — the only file you need to edit for the site's content.
   ===================================================================
 
-    SOCIAL      the LinkedIn / YouTube / Instagram icons in the header
+    SOCIAL      the LinkedIn / YouTube / Instagram links on About Me
     REEL        the demo reel that auto-plays at the top of Projects
     CATEGORIES  the sections on the Projects page, in order
     PROJECTS    every video in the Projects grid
@@ -13,14 +13,13 @@
 */
 
 
-/* ---------- Header icons ----------
-   `icon` must be "linkedin", "youtube", or "instagram".
-   `handle` is the link text shown on the About page. */
+/* ---------- Social links ----------
+   Shown on the About Me page. `handle` is the link text. */
 
 const SOCIAL = [
-  { label: "LinkedIn",  icon: "linkedin",  handle: "Brendan Kesterson", url: "https://www.linkedin.com/in/brendan-kesterson-22063a24b/" },
-  { label: "YouTube",   icon: "youtube",   handle: "@B_Borderless",     url: "https://www.youtube.com/@B_Borderless" },
-  { label: "Instagram", icon: "instagram", handle: "@b_borderless_",    url: "https://www.instagram.com/b_borderless_/" }
+  { label: "LinkedIn",  handle: "Brendan Kesterson", url: "https://www.linkedin.com/in/brendan-kesterson-22063a24b/" },
+  { label: "YouTube",   handle: "@B_Borderless",     url: "https://www.youtube.com/@B_Borderless" },
+  { label: "Instagram", handle: "@b_borderless_",    url: "https://www.instagram.com/b_borderless_/" }
 ];
 
 
