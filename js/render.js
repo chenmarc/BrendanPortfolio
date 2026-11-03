@@ -19,10 +19,25 @@ function thumbnail(id) {
   return `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 }
 
+const ICONS = {
+  linkedin: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.25v.01M12 17v-6.5M12 13.5c0-1.8 1.1-3 2.5-3s2.5 1 2.5 3V17"/></svg>`,
+  youtube:  `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.25 9.25v5.5L15 12z" class="fill"/></svg>`,
+  instagram:`<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.25" cy="6.75" r="0.6" class="fill"/></svg>`
+};
+
 function esc(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;").replace(/</g, "&lt;")
     .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+
+/* ---------- Header icons ---------- */
+
+function renderSocial(el) {
+  el.innerHTML = SOCIAL.filter((s) => s.url && ICONS[s.icon]).map((s) => `
+    <li><a href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}" title="${esc(s.label)}">${ICONS[s.icon]}</a></li>`
+  ).join("");
 }
 
 
@@ -81,15 +96,7 @@ function projectTile(project) {
 }
 
 function renderProjects(el) {
-  el.innerHTML = CATEGORIES.map((cat) => {
-    const projects = PROJECTS.filter((p) => p.category === cat.id);
-    if (!projects.length) return "";
-    return `
-      <section class="category" aria-labelledby="cat-${cat.id}">
-        <h2 id="cat-${cat.id}">${esc(cat.title)}</h2>
-        <ul class="grid">${projects.map(projectTile).join("")}</ul>
-      </section>`;
-  }).join("");
+  el.innerHTML = `<ul class="grid">${PROJECTS.map(projectTile).join("")}</ul>`;
 }
 
 

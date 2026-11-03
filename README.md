@@ -5,10 +5,12 @@ build step. It runs on GitHub Pages as-is.
 
 ## Pages
 
-- **Projects** (`index.html`, the homepage): the demo reel plays muted on
-  loop at the top; below it, projects in a grid by section (Narrative
-  Film, Freelance Work, Documentary Film). Hover a thumbnail for its
+- **Projects** (`index.html`, the homepage): the demo reel plays at the
+  top; below it, every project in one grid. Hover a thumbnail for its
   title; click to watch with sound in a full-screen viewer.
+The header on every page has the name, the page links, and LinkedIn,
+YouTube, and Instagram icons.
+
 - **Stills** (`stills.html`): every still, uncropped; click to enlarge.
 - **About Me** (`about.html`): photo, then description, then email and
   social links, in one centered column.
@@ -21,19 +23,18 @@ Everything lives in **`js/content.js`**:
 | To change | Edit |
 |---|---|
 | Demo reel | `REEL` |
-| Projects | `PROJECTS`: one line each, with `title`, `category`, `youtube` |
-| Section names or order | `CATEGORIES` (empty sections are hidden) |
+| Projects | `PROJECTS`: one line each, with `title` and `youtube` |
 | Stills | `STILLS`: one file name per line, in display order |
 | About Me text, photo, email | `ABOUT` |
-| Social links (on About Me) | `SOCIAL` |
+| Social links (header icons + About Me) | `SOCIAL` |
 
 ### Adding a project
 
-```js
-{ title: "Shown on hover", category: "documentary", youtube: "https://youtu.be/VIDEO_ID" },
-```
+Add a line to the end of `PROJECTS` (list order is grid order):
 
-`category` is `narrative`, `freelance`, or `documentary`.
+```js
+{ title: "Shown on hover", youtube: "https://www.youtube.com/watch?v=VIDEO_ID" },
+```
 
 ### Adding a still
 

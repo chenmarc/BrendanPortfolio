@@ -2,9 +2,8 @@
   CONTENT.JS — the only file you need to edit for the site's content.
   ===================================================================
 
-    SOCIAL      the LinkedIn / YouTube / Instagram links on About Me
+    SOCIAL      LinkedIn / YouTube / Instagram (header icons + About Me)
     REEL        the demo reel that auto-plays at the top of Projects
-    CATEGORIES  the sections on the Projects page, in order
     PROJECTS    every video in the Projects grid
     STILLS      every image on the Stills page, in order
     ABOUT       the About Me page: photo, description, email
@@ -14,12 +13,14 @@
 
 
 /* ---------- Social links ----------
-   Shown on the About Me page. `handle` is the link text. */
+   Shown as icons in the header and as links on About Me.
+   `icon` must be "linkedin", "youtube", or "instagram".
+   `handle` is the link text on About Me. */
 
 const SOCIAL = [
-  { label: "LinkedIn",  handle: "Brendan Kesterson", url: "https://www.linkedin.com/in/brendan-kesterson-22063a24b/" },
-  { label: "YouTube",   handle: "@B_Borderless",     url: "https://www.youtube.com/@B_Borderless" },
-  { label: "Instagram", handle: "@b_borderless_",    url: "https://www.instagram.com/b_borderless_/" }
+  { label: "LinkedIn",  icon: "linkedin",  handle: "Brendan Kesterson", url: "https://www.linkedin.com/in/brendan-kesterson-22063a24b/" },
+  { label: "YouTube",   icon: "youtube",   handle: "@B_Borderless",     url: "https://www.youtube.com/@B_Borderless" },
+  { label: "Instagram", icon: "instagram", handle: "@b_borderless_",    url: "https://www.instagram.com/b_borderless_/" }
 ];
 
 
@@ -29,24 +30,20 @@ const SOCIAL = [
 const REEL = "https://www.youtube.com/watch?v=E7TyR8BJIfg";
 
 
-/* ---------- Project sections ----------
-   Shown in this order. A section with no projects is hidden. */
-
-const CATEGORIES = [
-  { id: "narrative",   title: "Narrative Film" },
-  { id: "freelance",   title: "Freelance Work" },
-  { id: "documentary", title: "Documentary Film" }
-];
-
-
 /* ---------- Projects ----------
-   One line per video. `category` must match an id above.
-   The title appears when someone hovers over the thumbnail. */
+   Every video in the Projects grid, in display order. Add a project by
+   copying one line; the title appears when someone hovers over it. */
 
 const PROJECTS = [
-  { title: "Blood and Ash Trailer", category: "narrative", youtube: "https://youtu.be/bQ8Ka11HBqk" },
-  { title: "Bodacious",             category: "narrative", youtube: "https://youtu.be/ARXyO38aNAg" },
-  { title: "Whiskey Priest",        category: "narrative", youtube: "https://youtu.be/TDgXP2ldb_E" }
+  { title: "Blood and Ash Trailer", youtube: "https://youtu.be/bQ8Ka11HBqk" },
+  { title: "Bodacious",             youtube: "https://youtu.be/ARXyO38aNAg" },
+  { title: "Whiskey Priest",        youtube: "https://youtu.be/TDgXP2ldb_E" },
+  { title: "UO International Business & Economics Club 2026 Black Tie Dinner", youtube: "https://www.youtube.com/watch?v=yTj7HgodvdY" },
+  { title: "CINE 425 Advanced Lighting Techniques Final Projects",              youtube: "https://www.youtube.com/watch?v=0YlwgpSw4c0" },
+  { title: "The Revival of Retro - JCOM 220 Documentary Project",               youtube: "https://www.youtube.com/watch?v=LC2PFbM26wg" },
+  { title: "Unspool - Product Design Debut",                                    youtube: "https://www.youtube.com/watch?v=t2gv7S7A6as" },
+  { title: "Don’t Sweat it - UO Weightlifting Club",                            youtube: "https://www.youtube.com/watch?v=FNajKWpBdNY" },
+  { title: "Harmony - Guitar Short",                                            youtube: "https://www.youtube.com/watch?v=QZfTDFe9uIM" }
 ];
 
 
